@@ -19,7 +19,10 @@ object RegistrationUtil {
         passwordConfirmation: String
     ): Boolean {
 
-        return true
+        return username.isNotEmpty() && password.isNotEmpty() && username !in existingUsers && password.length >= 8 &&
+
+                password == passwordConfirmation && password.count { it.isDigit() } >= 2 && (password.count { it.isLetter() } >= 2)
+
 
     }
 }
